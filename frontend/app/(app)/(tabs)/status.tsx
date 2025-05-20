@@ -61,13 +61,13 @@ const Status = () => {
         <View className="flex-row items-center justify-center mb-4">
           <Text
             className={`text-[18px] font-bold ${
-              latestSensorData?.soilMoisture >
+              latestSensorData?.soilMoisture <
               (thresholdData?.soilMoisture ?? 0)
                 ? "text-green-700"
                 : "text-red-600"
             }`}
           >
-            {latestSensorData?.soilMoisture > (thresholdData?.soilMoisture ?? 0)
+            {latestSensorData?.soilMoisture < (thresholdData?.soilMoisture ?? 0)
               ? "On"
               : "Off"}
             {`  (Current: ${latestSensorData?.soilMoisture}%, Threshold: ${
