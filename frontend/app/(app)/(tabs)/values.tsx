@@ -1,141 +1,20 @@
 import { Text, ScrollView } from "react-native";
-import React from "react";
+import React, { use, useContext } from "react";
 import { LineChart } from "react-native-gifted-charts";
-
-// Use the provided latest 20 updates as the data source
-const sensorData = [
-  {
-    temperature: 31.2,
-    humidity: 69.2,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:43:42.000Z",
-  },
-  {
-    temperature: 31.3,
-    humidity: 69.1,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:43:27.000Z",
-  },
-  {
-    temperature: 31.3,
-    humidity: 69.3,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:43:12.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.1,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:42:57.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.4,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:42:42.000Z",
-  },
-  {
-    temperature: 31.3,
-    humidity: 69.2,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:42:27.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.3,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:42:12.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.2,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:41:57.000Z",
-  },
-  {
-    temperature: 31.3,
-    humidity: 69.1,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:41:42.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.2,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:41:27.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.2,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:41:12.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.2,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:40:57.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.3,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:40:42.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.3,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:40:27.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.3,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:40:12.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.2,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:39:57.000Z",
-  },
-  {
-    temperature: 31.3,
-    humidity: 69.1,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:39:42.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.2,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:39:27.000Z",
-  },
-  {
-    temperature: 31.3,
-    humidity: 69.2,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:39:12.000Z",
-  },
-  {
-    temperature: 31.2,
-    humidity: 69.2,
-    soilMoisture: 0,
-    timestamp: "2025-05-20T12:38:57.000Z",
-  },
-];
+import { GlobalContext } from "@/context/GlobalContext";
 
 export default function Values() {
-  const tempData = sensorData.map((item, i) => ({
+  const { sensorData } = useContext(GlobalContext);
+
+  const tempData = sensorData?.map((item, i) => ({
     value: item.temperature,
     label: `${i + 1}`,
   }));
-  const humidityData = sensorData.map((item, i) => ({
+  const humidityData = sensorData?.map((item, i) => ({
     value: item.humidity,
     label: `${i + 1}`,
   }));
-  const soilData = sensorData.map((item, i) => ({
+  const soilData = sensorData?.map((item, i) => ({
     value: item.soilMoisture,
     label: `${i + 1}`,
   }));
@@ -155,7 +34,7 @@ export default function Values() {
     maxValue: 100,
     yAxisTextStyle: { color: "#6B6767", fontSize: 12 },
     xAxisLabelTextStyle: { color: "#222", fontSize: 12 },
-    xAxisLabelTexts: sensorData.map((_, i) => `${i + 1}`),
+    xAxisLabelTexts: sensorData?.map((_, i) => `${i + 1}`),
   };
 
   return (
